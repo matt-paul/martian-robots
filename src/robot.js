@@ -23,6 +23,7 @@ Robot.prototype = {
   },
 
   orientate: function(instruction, orientation) {
+    //add method to validate instruction input
     if (instruction === 'L') {
       var leftMap = {'N': 'W', 'W': 'S', 'S': 'E','E': 'N'}
       this.orientation = leftMap[orientation];
@@ -30,7 +31,7 @@ Robot.prototype = {
       var rightMap = {'N': 'E', 'E': 'S', 'S': 'W','W': 'N'}
       this.orientation = rightMap[orientation];
     }
-  },
+  }
 
 
 };

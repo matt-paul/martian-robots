@@ -93,5 +93,6 @@ describe('Robot', function() {
         expect(rob.orientation).toEqual('N');
       });
     });
+
   });
 });
