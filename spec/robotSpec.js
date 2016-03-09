@@ -7,7 +7,6 @@ describe('Robot', function() {
   });
 
   describe('inititalisation', function() {
-
     it('should have some starting coordinates', function() {
       expect(rob.coordinates).toBeDefined();
     });
@@ -23,11 +22,10 @@ describe('Robot', function() {
     it('should process instruction string into an array', function()  {
     expect(rob.instructions).toEqual(['F','F']);
     });
-
   });
 
-  describe('moving forward', function() {
 
+  describe('moving forward', function() {
     it('should move north', function() {
       rob.moveForward([2,2], 'N');
       expect(rob.coordinates).toEqual([2,3]);
@@ -47,7 +45,32 @@ describe('Robot', function() {
       rob.moveForward([2,2], 'W');
       expect(rob.coordinates).toEqual([1,2]);
     });
-
   });
 
+  describe('changing orientation', function() {
+
+    describe('turning left', function() {
+      it('should turn to face west when facing north', function() {
+        rob.orientate('L', 'N');
+        expect(rob.orientation).toEqual('W');
+      });
+
+      it('should turn to face south when facing west', function() {
+        rob.orientate('L', 'W');
+        expect(rob.orientation).toEqual('S');
+      });
+
+      it('should turn to face east when facing south', function() {
+        rob.orientate('L', 'S');
+        expect(rob.orientation).toEqual('E');
+      });
+
+      it('should turn to face north when facing east', function() {
+        rob.orientate('L', 'E');
+        expect(rob.orientation).toEqual('N');
+      });
+    });
+
+
+  });
 });

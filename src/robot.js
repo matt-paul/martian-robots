@@ -5,6 +5,7 @@ function Robot (x,y,o,i) {
 }
 
 Robot.prototype = {
+
   constructor: Robot,
 
   moveForward: function(coordinates, orientation) {
@@ -19,6 +20,20 @@ Robot.prototype = {
       coordinates[0] -=1;
     }
     this.coordinates = coordinates;
+  },
+
+  orientate: function(instruction, orientation) {
+    if (instruction === 'L') {
+      var leftMap = {'N': 'W', 'W': 'S', 'S': 'E','E': 'N'}
+      this.orientation = leftMap[orientation];
+    } else {
+
     }
+  },
+
+
 };
+
+
+
 
