@@ -93,6 +93,13 @@ describe('Robot', function() {
         expect(rob.orientation).toEqual('N');
       });
     });
+  });
 
+  describe('tracking grid positions', function() {
+
+    it('should push each grid position on the journey into an array', function() {
+      rob.moveForward([1,1],'N');
+      expect(rob.trackingArray).toEqual([[1,1],[1,2]])
+    });
   });
 });

@@ -2,6 +2,7 @@ function Robot (x,y,o,i) {
   this.coordinates = [x,y];
   this.orientation = o;
   this.instructions = i.split('');
+  this.trackingArray = [[x,y]];
 }
 
 Robot.prototype = {
@@ -19,6 +20,7 @@ Robot.prototype = {
     } else {
       coordinates[0] -=1;
     }
+    this.trackingArray.push(coordinates)
     this.coordinates = coordinates;
   },
 
