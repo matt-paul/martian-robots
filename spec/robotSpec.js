@@ -72,5 +72,26 @@ describe('Robot', function() {
     });
 
 
+    describe('turning right', function() {
+      it('should turn to face east when facing north', function() {
+        rob.orientate('R', 'N');
+        expect(rob.orientation).toEqual('E');
+      });
+
+      it('should turn to face south when facing east', function() {
+        rob.orientate('R', 'E');
+        expect(rob.orientation).toEqual('S');
+      });
+
+      it('should turn to face west when facing south', function() {
+        rob.orientate('R', 'S');
+        expect(rob.orientation).toEqual('W');
+      });
+
+      it('should turn to face north when facing west', function() {
+        rob.orientate('R', 'W');
+        expect(rob.orientation).toEqual('N');
+      });
+    });
   });
 });

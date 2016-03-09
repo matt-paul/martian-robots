@@ -27,7 +27,8 @@ Robot.prototype = {
       var leftMap = {'N': 'W', 'W': 'S', 'S': 'E','E': 'N'}
       this.orientation = leftMap[orientation];
     } else {
-
+      var rightMap = {'N': 'E', 'E': 'S', 'S': 'W','W': 'N'}
+      this.orientation = rightMap[orientation];
     }
   },
 
