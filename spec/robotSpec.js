@@ -148,6 +148,14 @@ describe('Robot', function() {
       rob.navigate();
       expect(rob.orientation).toEqual('N');
     });
+
+    // it('should disregard a command to move forward if a robot was last seen on it', function() {
+    //   this.lostRobotHistory = [[[1,3]]];
+    //   rob.downloadData(1,1,'E','FFF')
+    //   rob.navigate();
+    //   expect(rob.coordinates).toEqual([1,2])
+    // })
   });
+
 
 });

@@ -48,7 +48,6 @@ Robot.prototype = {
       this.orientation = rightMap[this.orientation];
   }
 
-
 };
 
 

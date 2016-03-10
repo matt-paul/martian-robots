@@ -37,8 +37,9 @@ describe('The Grid', function() {
       baz = new Robot();
       baz.downloadData(1,1,'N','F')
       mars.addRobot(baz);
-      mars.sendLostRobotData();
+      mars.transmitLostRobotData();
       expect(mars.robot.lostRobotHistory).toEqual([[[8,7]]]);
-    })
+    });
+
   });
 });
