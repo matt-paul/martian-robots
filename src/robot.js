@@ -36,18 +36,15 @@ Robot.prototype = {
   },
 
   navigate: function() {
-    // this.coordinates = [x,y];
-    // this.orientation = orientation;
-    // this.instructions = instructions.split('');
-    // this.trackingArray = [[x,y]];
     for (var i = 0; i < this.instructions.length; i++) {
-      if (instructions[i] === 'L' || 'R') {
-        this.orientate(instructions[i])
-        } else if (instructions[i] === 'F') {
-          this.moveForward()
-        }
+      var command = this.instructions[i];
+      console.log(command);
+      if (command === 'F') {
+        this.moveForward()
+      } else if (command === 'L' || 'R') {
+        this.orientate(this.instructions[i])
+      }
     }
-
   }
 
   // updateLostRobotPositions: function(coordinates) {

@@ -29,8 +29,6 @@ describe('Robot', function() {
 
 
   describe('moving forward', function() {
-
-
     it('should move north', function() {
       rob.downloadData(1,1,'N','F')
       rob.moveForward();
@@ -57,7 +55,6 @@ describe('Robot', function() {
   });
 
   describe('changing orientation', function() {
-
     describe('turning left', function() {
       it('should turn to face west when facing north', function() {
         rob.downloadData(1,1,'N','F')
@@ -83,7 +80,6 @@ describe('Robot', function() {
         expect(rob.orientation).toEqual('N');
       });
     });
-
 
     describe('turning right', function() {
       it('should turn to face east when facing north', function() {
@@ -113,26 +109,37 @@ describe('Robot', function() {
   });
 
   describe('tracking grid positions', function() {
-
     it('should push each grid position on the journey into an array', function() {
       rob.downloadData(1,1,'N','F')
       rob.moveForward();
       expect(rob.trackingArray).toEqual([[1,1],[1,2]])
     });
-
   });
 
-  describe('carrying out instructions', function() {
+  describe('navigating', function() {
+    it('should give back a correct final grid position for Sample Input 1', function() {
+      rob.downloadData(1,1,'E','RFRFRFRF')
+      rob.navigate();
+      expect(rob.coordinates).toEqual([1,1]);
+    });
 
-    // it('should give back a final grid position', function() {
-    //   rob.downloadData(1,1,'N','FF')
-    //   expect(rob.coordinates).toEqual([1,3]);
-    // });
+    it('should give back a correct final grid position for Sample Input 2', function() {
+      rob.downloadData(3,2,'N','FRRFLLFFRRFLL')
+      rob.navigate();
+      expect(rob.coordinates).toEqual([3,3]);
+    });
 
-    // it('should give back a final grid position', function() {
-    //   rob.navigate(3,2,'N','LLFFFLFLFL')
-    //   expect(rob.coordinates).toEqual([3,3]);
-    // });
+    it('should give back a correct final orientation for Sample Input 1', function() {
+      rob.downloadData(1,1,'E','RFRFRFRF')
+      rob.navigate();
+      expect(rob.orientation).toEqual('E');
+    });
 
+    it('should give back a correct final orientation for Sample Input 2', function() {
+      rob.downloadData(3,2,'N','FRRFLLFFRRFLL')
+      rob.navigate();
+      expect(rob.orientation).toEqual('N');
+    });
   });
+
 });
