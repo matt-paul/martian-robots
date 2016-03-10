@@ -13,6 +13,18 @@ Robot.prototype = {
     this.lostRobotHistory = [];
   },
 
+  navigate: function() {
+    for (var i = 0; i < this.instructions.length; i++) {
+      var command = this.instructions[i];
+      console.log(command);
+      if (command === 'F') {
+        this._moveForward()
+      } else if (command === 'L' || 'R') {
+        this._orientate(this.instructions[i])
+      }
+    }
+  },
+
   _moveForward: function() {
     if(this.orientation === 'N') {
       this.coordinates[1] +=1;
@@ -27,26 +39,21 @@ Robot.prototype = {
   },
 
   _orientate: function(instruction) {
-    if (instruction === 'L') {
-      var leftMap = {'N': 'W', 'W': 'S', 'S': 'E','E': 'N'}
-      this.orientation = leftMap[this.orientation];
-    } else if (instruction === 'R') {
-      var rightMap = {'N': 'E', 'E': 'S', 'S': 'W','W': 'N'}
-      this.orientation = rightMap[this.orientation];
+    if (instruction === 'L' || instruction === 'R') {
+      instruction === 'L' ? this._orientateLeft() : this._orientateRight();
     }
   },
 
-  navigate: function() {
-    for (var i = 0; i < this.instructions.length; i++) {
-      var command = this.instructions[i];
-      console.log(command);
-      if (command === 'F') {
-        this._moveForward()
-      } else if (command === 'L' || 'R') {
-        this._orientate(this.instructions[i])
-      }
-    }
+  _orientateLeft: function() {
+      var leftMap = {'N': 'W', 'W': 'S', 'S': 'E','E': 'N'}
+      this.orientation = leftMap[this.orientation];
+  },
+
+   _orientateRight: function() {
+      var rightMap = {'N': 'E', 'E': 'S', 'S': 'W','W': 'N'}
+      this.orientation = rightMap[this.orientation];
   }
+
 
 };
 
