@@ -3,10 +3,13 @@ describe('Robot', function() {
   var rob;
 
   beforeEach(function() {
-    rob = new Robot(1,1,'E','FF', 77);
+    rob = new Robot();
   });
 
   describe('inititalisation', function() {
+    beforeEach(function() {
+      rob.navigate(1,1,'E','FF',77)
+    });
     it('should have some starting coordinates', function() {
       expect(rob.coordinates).toBeDefined();
     });
@@ -26,52 +29,57 @@ describe('Robot', function() {
 
 
   describe('moving forward', function() {
+
+
     it('should move north', function() {
-      rob.moveForward([2,2], 'N');
-      expect(rob.coordinates).toEqual([2,3]);
+      rob.navigate(1,1,'N','FF')
+      rob.moveForward();
+      expect(rob.coordinates).toEqual([1,2]);
     });
 
     it('should move south', function() {
-      rob.moveForward([2,2], 'S');
-      expect(rob.coordinates).toEqual([2,1]);
+      rob.navigate(1,1,'S','FF')
+      rob.moveForward();
+      expect(rob.coordinates).toEqual([1,0]);
     });
 
     it('should move east', function() {
-      rob.moveForward([2,2], 'E');
-      expect(rob.coordinates).toEqual([3,2]);
+      rob.navigate(1,1,'E','FF')
+      rob.moveForward();
+      expect(rob.coordinates).toEqual([2,1]);
     });
 
     it('should move west', function() {
-      rob.moveForward([2,2], 'W');
-      expect(rob.coordinates).toEqual([1,2]);
+      rob.navigate(1,1,'W','FF')
+      rob.moveForward();
+      expect(rob.coordinates).toEqual([0,1]);
     });
   });
 
   describe('changing orientation', function() {
 
-    it('should validate correct orientation input', function() {
-      rob.orientate('Z', 'E');
-      expect(rob.orientation).toEqual('E');
-    });
-
     describe('turning left', function() {
       it('should turn to face west when facing north', function() {
-        rob.orientate('L', 'N');
+        rob.navigate(1,1,'N','FF')
+        rob.orientate('L');
         expect(rob.orientation).toEqual('W');
       });
 
       it('should turn to face south when facing west', function() {
-        rob.orientate('L', 'W');
+        rob.navigate(1,1,'W','FF')
+        rob.orientate('L');
         expect(rob.orientation).toEqual('S');
       });
 
       it('should turn to face east when facing south', function() {
-        rob.orientate('L', 'S');
+        rob.navigate(1,1,'S','FF')
+        rob.orientate('L');
         expect(rob.orientation).toEqual('E');
       });
 
       it('should turn to face north when facing east', function() {
-        rob.orientate('L', 'E');
+        rob.navigate(1,1,'E','FF')
+        rob.orientate('L');
         expect(rob.orientation).toEqual('N');
       });
     });
@@ -79,22 +87,26 @@ describe('Robot', function() {
 
     describe('turning right', function() {
       it('should turn to face east when facing north', function() {
-        rob.orientate('R', 'N');
+        rob.navigate(1,1,'N','FF')
+        rob.orientate('R');
         expect(rob.orientation).toEqual('E');
       });
 
       it('should turn to face south when facing east', function() {
-        rob.orientate('R', 'E');
+        rob.navigate(1,1,'E','FF')
+        rob.orientate('R');
         expect(rob.orientation).toEqual('S');
       });
 
       it('should turn to face west when facing south', function() {
-        rob.orientate('R', 'S');
+        rob.navigate(1,1,'S','FF')
+        rob.orientate('R');
         expect(rob.orientation).toEqual('W');
       });
 
       it('should turn to face north when facing west', function() {
-        rob.orientate('R', 'W');
+        rob.navigate(1,1,'W','FF')
+        rob.orientate('R');
         expect(rob.orientation).toEqual('N');
       });
     });
@@ -102,31 +114,18 @@ describe('Robot', function() {
 
   describe('tracking grid positions', function() {
 
-    // var grid;
-
-    // beforeEach(function() {
-    //   grid = {
-    //     updateLostRobots: function(value) {
-    //     }
-    //   };
-    //   spyOn(grid, 'updateLostRobots');
-    // });
-
     it('should push each grid position on the journey into an array', function() {
-      rob.moveForward([1,1],'N');
+      rob.navigate(1,1,'N','FF')
+      rob.moveForward();
       expect(rob.trackingArray).toEqual([[1,1],[1,2]])
     });
 
-    // it('should be able to recognise if it has gone off grid', function() {
-    //   rob.moveForward([7,7], 'N');
-    //   expect(grid.updateLostRobots).toHaveBeenCalled();
-    // });
   });
 
   describe('carrying out instructions', function() {
 
     // it('should give back a final grid position', function() {
-    //   rob.navigate([3,2],'N','LLFFFLFLFL')
+    //   rob.navigate(3,2,'N','LLFFFLFLFL')
     //   expect(rob.coordinates).toEqual([3,3]);
     // });
 
