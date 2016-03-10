@@ -15,13 +15,7 @@ Robot.prototype = {
 
   navigate: function() {
     for (var i = 0; i < this.instructions.length; i++) {
-      var command = this.instructions[i];
-      console.log(command);
-      if (command === 'F') {
-        this._moveForward()
-      } else if (command === 'L' || 'R') {
-        this._orientate(this.instructions[i])
-      }
+      this.instructions[i] === 'F' ? this._moveForward() : this._orientate(this.instructions[i]);
     }
   },
 

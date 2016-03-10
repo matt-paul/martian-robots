@@ -55,7 +55,7 @@ describe('Robot', function() {
   });
 
   describe('changing orientation', function() {
-    describe('wrong orientation command', function() {
+    describe('invalid orientation command', function() {
       it('should not change direction if a invalid command is given', function() {
         rob.downloadData(1,1,'N', 'F');
         rob._orientate('Z');
