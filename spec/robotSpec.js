@@ -8,7 +8,7 @@ describe('Robot', function() {
 
   describe('inititalisation', function() {
     beforeEach(function() {
-      rob.navigate(1,1,'E','FF',77)
+      rob.downloadData(1,1,'E','FF',77)
     });
     it('should have some starting coordinates', function() {
       expect(rob.coordinates).toBeDefined();
@@ -32,25 +32,25 @@ describe('Robot', function() {
 
 
     it('should move north', function() {
-      rob.navigate(1,1,'N','FF')
+      rob.downloadData(1,1,'N','F')
       rob.moveForward();
       expect(rob.coordinates).toEqual([1,2]);
     });
 
     it('should move south', function() {
-      rob.navigate(1,1,'S','FF')
+      rob.downloadData(1,1,'S','F')
       rob.moveForward();
       expect(rob.coordinates).toEqual([1,0]);
     });
 
     it('should move east', function() {
-      rob.navigate(1,1,'E','FF')
+      rob.downloadData(1,1,'E','F')
       rob.moveForward();
       expect(rob.coordinates).toEqual([2,1]);
     });
 
     it('should move west', function() {
-      rob.navigate(1,1,'W','FF')
+      rob.downloadData(1,1,'W','F')
       rob.moveForward();
       expect(rob.coordinates).toEqual([0,1]);
     });
@@ -60,25 +60,25 @@ describe('Robot', function() {
 
     describe('turning left', function() {
       it('should turn to face west when facing north', function() {
-        rob.navigate(1,1,'N','FF')
+        rob.downloadData(1,1,'N','F')
         rob.orientate('L');
         expect(rob.orientation).toEqual('W');
       });
 
       it('should turn to face south when facing west', function() {
-        rob.navigate(1,1,'W','FF')
+        rob.downloadData(1,1,'W','F')
         rob.orientate('L');
         expect(rob.orientation).toEqual('S');
       });
 
       it('should turn to face east when facing south', function() {
-        rob.navigate(1,1,'S','FF')
+        rob.downloadData(1,1,'S','F')
         rob.orientate('L');
         expect(rob.orientation).toEqual('E');
       });
 
       it('should turn to face north when facing east', function() {
-        rob.navigate(1,1,'E','FF')
+        rob.downloadData(1,1,'E','F')
         rob.orientate('L');
         expect(rob.orientation).toEqual('N');
       });
@@ -87,25 +87,25 @@ describe('Robot', function() {
 
     describe('turning right', function() {
       it('should turn to face east when facing north', function() {
-        rob.navigate(1,1,'N','FF')
+        rob.downloadData(1,1,'N','F')
         rob.orientate('R');
         expect(rob.orientation).toEqual('E');
       });
 
       it('should turn to face south when facing east', function() {
-        rob.navigate(1,1,'E','FF')
+        rob.downloadData(1,1,'E','F')
         rob.orientate('R');
         expect(rob.orientation).toEqual('S');
       });
 
       it('should turn to face west when facing south', function() {
-        rob.navigate(1,1,'S','FF')
+        rob.downloadData(1,1,'S','F')
         rob.orientate('R');
         expect(rob.orientation).toEqual('W');
       });
 
       it('should turn to face north when facing west', function() {
-        rob.navigate(1,1,'W','FF')
+        rob.downloadData(1,1,'W','F')
         rob.orientate('R');
         expect(rob.orientation).toEqual('N');
       });
@@ -115,7 +115,7 @@ describe('Robot', function() {
   describe('tracking grid positions', function() {
 
     it('should push each grid position on the journey into an array', function() {
-      rob.navigate(1,1,'N','FF')
+      rob.downloadData(1,1,'N','F')
       rob.moveForward();
       expect(rob.trackingArray).toEqual([[1,1],[1,2]])
     });
@@ -123,6 +123,11 @@ describe('Robot', function() {
   });
 
   describe('carrying out instructions', function() {
+
+    // it('should give back a final grid position', function() {
+    //   rob.downloadData(1,1,'N','FF')
+    //   expect(rob.coordinates).toEqual([1,3]);
+    // });
 
     // it('should give back a final grid position', function() {
     //   rob.navigate(3,2,'N','LLFFFLFLFL')

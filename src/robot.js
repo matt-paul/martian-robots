@@ -5,6 +5,13 @@ Robot.prototype = {
 
   constructor: Robot,
 
+  downloadData: function(x,y, orientation,instructions) {
+    this.coordinates = [x,y];
+    this.orientation = orientation;
+    this.instructions = instructions.split('');
+    this.trackingArray = [[x,y]];
+  },
+
   moveForward: function() {
     if(this.orientation === 'N') {
       this.coordinates[1] +=1;
@@ -28,11 +35,11 @@ Robot.prototype = {
     }
   },
 
-  navigate: function(x,y, orientation,instructions) {
-    this.coordinates = [x,y];
-    this.orientation = orientation;
-    this.instructions = instructions.split('');
-    this.trackingArray = [[x,y]];
+  navigate: function() {
+    // this.coordinates = [x,y];
+    // this.orientation = orientation;
+    // this.instructions = instructions.split('');
+    // this.trackingArray = [[x,y]];
     for (var i = 0; i < this.instructions.length; i++) {
       if (instructions[i] === 'L' || 'R') {
         this.orientate(instructions[i])
