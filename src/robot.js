@@ -10,9 +10,10 @@ Robot.prototype = {
     this.orientation = orientation;
     this.instructions = instructions.split('');
     this.trackingArray = [[x,y]];
+    this.lostRobotHistory = [];
   },
 
-  moveForward: function() {
+  _moveForward: function() {
     if(this.orientation === 'N') {
       this.coordinates[1] +=1;
     } else if (this.orientation === 'S') {
@@ -25,7 +26,7 @@ Robot.prototype = {
     this.trackingArray.push(this.coordinates)
   },
 
-  orientate: function(instruction) {
+  _orientate: function(instruction) {
     if (instruction === 'L') {
       var leftMap = {'N': 'W', 'W': 'S', 'S': 'E','E': 'N'}
       this.orientation = leftMap[this.orientation];
@@ -40,19 +41,12 @@ Robot.prototype = {
       var command = this.instructions[i];
       console.log(command);
       if (command === 'F') {
-        this.moveForward()
+        this._moveForward()
       } else if (command === 'L' || 'R') {
-        this.orientate(this.instructions[i])
+        this._orientate(this.instructions[i])
       }
     }
   }
-
-  // updateLostRobotPositions: function(coordinates) {
-  //   if (this.coordinates[0] > this.grid.outerEdgeCoordinates[0])
-  //   this.grid.updateLostRobots(coordinates);
-  //   console.log(this.coordinates)
-  // }
-
 
 };
 

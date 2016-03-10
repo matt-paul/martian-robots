@@ -1,6 +1,6 @@
 describe('The Grid', function() {
 
-  var mars;
+  var mars, rob;
 
   beforeEach(function() {
     mars = new Grid(77);
@@ -14,16 +14,31 @@ describe('The Grid', function() {
     expect(mars.outerEdgeCoordinates).toEqual([7,7])
   });
 
-  describe('updating with lost robot coordinates', function() {
+  it('should add a robot to the grid', function() {
+    rob = new Robot();
+    mars.addRobot(rob);
+    expect(mars.robot).toEqual(rob);
+  });
 
-    it('should have am update lost robots method', function() {
-      expect(mars.updateLostRobots).toBeDefined();
+  describe('identifying lost robot coordinates', function() {
+
+    beforeEach(function() {
+      rob = new Robot();
+      mars.addRobot(rob);
+      mars.robot.coordinates = [8,7];
+      mars.trackRobot();
     });
 
-    it('should update the lost robots array of coordinates', function() {
-      mars.updateLostRobots([7,7]);
-      expect(mars.lostRobotCoordinatesArray).toEqual([[7,7]]);
-    })
+    it('should track whether a robot has strayed over end of grid', function() {
+      expect(mars.lostRobotCoordinatesArray).toEqual([[8,7]]);
+    });
 
+    it('should update new robots with missing robot data', function() {
+      baz = new Robot();
+      baz.downloadData(1,1,'N','F')
+      mars.addRobot(baz);
+      mars.sendLostRobotData();
+      expect(mars.robot.lostRobotHistory).toEqual([[[8,7]]]);
+    })
   });
 });
