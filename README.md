@@ -1,13 +1,11 @@
 ## Martian Robots
 
-```
-git clone
-open SpecRunner.html to run jasmine tests.
+While in a suitable direcitory, type ```git clone https://github.com/matt-paul/martian-robots``` in a terminal window.
+
+To run the jasmine unit tests, open```SpecRunner.html``` in a browser.
 
 ```
-
-```
-User stories
+## User stories
 
 As a robot, I must be able to interpret the command 'F', and move forward one grid
 position so that I can start to explore the planet.
