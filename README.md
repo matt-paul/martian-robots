@@ -1,6 +1,7 @@
 ## Martian Robots
 
-While in a suitable direcitory, type ```git clone https://github.com/matt-paul/martian-robots``` in a terminal window.
+### Getting started
+In a suitable direcitory, type ```git clone https://github.com/matt-paul/martian-robots``` in a terminal window.
 
 To run the jasmine unit tests, open```SpecRunner.html``` in a browser.
 
@@ -34,6 +35,6 @@ planet earth so that my ground control knows where I am.
 
 ![Jasmine Tests](/images/Jasmine-tests.png)
 
-## Further Work
+### Further Work
 
-The last feature that I have not had a chance to complete is 
+The last feature that I have not had a chance to complete is for the robots to 
