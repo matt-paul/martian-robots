@@ -5,7 +5,7 @@ In a suitable direcitory, type ```git clone https://github.com/matt-paul/martian
 
 To run the jasmine unit tests, open```SpecRunner.html``` in a browser.
 
-### Some User Stories I have Created From The Brief.
+### User Stories
 ```
 As a robot, I must be able to interpret the command 'F', and move forward one grid
 position so that I can start to explore the planet.
