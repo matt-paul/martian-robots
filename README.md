@@ -33,3 +33,5 @@ to not behave like a lemming.
 As a robot, I must transmit my final grid position and orientation back to
 planet earth so that my masters know where I am.
 ```
+
+[Jasmine Tests](/images/jasmine-tests.png)
