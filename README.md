@@ -37,4 +37,4 @@ planet earth so that my ground control knows where I am.
 
 ### Further Work
 
-The last feature that I have not had a chance to complete is for the robots to 
+The last feature that I have not had a chance to complete is for the robots to not move off the edge of the world. I would also like to refactor the 'moveforward' method using a lookup table rather than 'if else', which I believe is better practice. Thirdly, I would like to look further at how best to mock the robots within my Grid tests.  Finally I would like refactor using ES6 conventions and try a modular pattern rather than using prototypes.  I would be very interested to see other examples! 
