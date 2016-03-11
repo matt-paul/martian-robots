@@ -11,7 +11,7 @@ Grid.prototype = {
   },
 
   transmitLostRobotData: function() {
-    this.robot.lostRobotHistory.push(this.lostRobotCoordinatesArray);
+    this.robot.lostRobotHistory.push.apply(this.robot.lostRobotHistory,this.lostRobotCoordinatesArray);
   },
 
   trackRobot: function() {

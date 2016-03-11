@@ -2,15 +2,14 @@ function Robot () {
 }
 
 Robot.prototype = {
-
   constructor: Robot,
 
-  downloadData: function(x,y, orientation,instructions) {
+  downloadData: function(x,y, orientation,instructions, lostRobotHistory) {
     this.coordinates = [x,y];
     this.orientation = orientation;
     this.instructions = instructions.split('');
     this.trackingArray = [[x,y]];
-    this.lostRobotHistory = [];
+    this.lostRobotHistory = [lostRobotHistory];
   },
 
   navigate: function() {

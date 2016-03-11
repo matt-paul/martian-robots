@@ -35,10 +35,10 @@ describe('The Grid', function() {
 
     it('should update new robots with missing robot data', function() {
       baz = new Robot();
-      baz.downloadData(1,1,'N','F')
+      baz.downloadData(1,1,'N','F',[]);
       mars.addRobot(baz);
       mars.transmitLostRobotData();
-      expect(mars.robot.lostRobotHistory).toEqual([[[8,7]]]);
+      expect(mars.robot.lostRobotHistory).toEqual([[],[8,7]]);
     });
 
   });
