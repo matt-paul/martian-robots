@@ -26,10 +26,14 @@ scent 'LOST', on my last grid point, so as to help future robots.
 
 As a robot, if I receive an instruction to move off the edge of the planet (ie a
 gridpoint scented by a previous robot), then I must ignore this command, so as
-to not behave like a lemming.
+to not behave like an earthly lemming.
 
 As a robot, I must transmit my final grid position and orientation back to
-planet earth so that my masters know where I am.
+planet earth so that my ground control knows where I am.
 ```
 
 ![Jasmine Tests](/images/Jasmine-tests.png)
+
+## Further Work
+
+The last feature that I have not had a chance to complete is 
