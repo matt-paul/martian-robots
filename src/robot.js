@@ -13,9 +13,11 @@ Robot.prototype = {
   },
 
   navigate: function() {
-    for (var i = 0; i < this.instructions.length; i++) {
-      this.instructions[i] === 'F' ? this._moveForward() : this._orientate(this.instructions[i]);
-    }
+    this.instructions.forEach(this._interpretCommand, this);
+  },
+
+  _interpretCommand: function(value) {
+    value === 'F' ? this._moveForward() : this._orientate(value);
   },
 
   _moveForward: function() {
