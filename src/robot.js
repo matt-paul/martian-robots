@@ -19,16 +19,15 @@ Robot.prototype = {
   },
 
   _moveForward: function() {
-    if(this.orientation === 'N') {
-      this.coordinates[1] +=1;
-    } else if (this.orientation === 'S') {
-      this.coordinates[1] -=1;
-    } else if (this.orientation === 'E') {
-      this.coordinates[0] +=1;
-    } else if(this.orientation === 'W') {
-      this.coordinates[0] -=1;
-    }
-    this.trackingArray.push(this.coordinates)
+    this._moveToNextGridPostion();
+    this.trackingArray.push(this.coordinates);
+  },
+
+  _moveToNextGridPosition: function() {
+    this.orientation === 'N' ? this.coordinates[1] +=1:
+    this.orientation === 'S' ? this.coordinates[1] -=1:
+    this.orientation === 'E' ? this.coordinates[0] +=1:
+    this.coordinates[0] -=1;
   },
 
   _orientate: function(instruction) {
