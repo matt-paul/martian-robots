@@ -19,7 +19,7 @@ Robot.prototype = {
   },
 
   _moveForward: function() {
-    this._moveToNextGridPostion();
+    this._moveToNextGridPosition();
     this.trackingArray.push(this.coordinates);
   },
 
@@ -27,7 +27,8 @@ Robot.prototype = {
     this.orientation === 'N' ? this.coordinates[1] +=1:
     this.orientation === 'S' ? this.coordinates[1] -=1:
     this.orientation === 'E' ? this.coordinates[0] +=1:
-    this.coordinates[0] -=1;
+    this.orientation === 'W' ? this.coordinates[0] -=1:
+    this.coordinates;
   },
 
   _orientate: function(instruction) {
