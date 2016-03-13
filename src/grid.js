@@ -1,17 +1,20 @@
-function Grid(outerEdgeCoordinates) {
-  this.outerEdgeCoordinates = outerEdgeCoordinates.toString(10).split("").map(Number);
-  this.lostRobotCoordinatesArray = [];
+function Grid() {
 }
 
 Grid.prototype = {
   constructor: Grid,
+
+  initialize: function(outerEdgeCoordinates) {
+    this.outerEdgeCoordinates = outerEdgeCoordinates.toString(10).split("").map(Number);
+    this.lostRobotCoordinatesArray = [];
+  },
 
   addRobot: function(robot) {
     this.robot = robot;
   },
 
   transmitLostRobotData: function() {
-    this.robot.lostRobotHistory.push.apply(this.robot.lostRobotHistory,this.lostRobotCoordinatesArray);
+    this.robot.lostRobotHistory.push.apply(this.robot.lostRobotHistory, this.lostRobotCoordinatesArray);
   },
 
   trackRobot: function() {
@@ -26,8 +29,6 @@ Grid.prototype = {
     var filteredData = lostData.filter(function(val) {
       return val !== 'LOST';
     });
-      this.lostRobotCoordinatesArray.push(filteredData);
+    this.lostRobotCoordinatesArray.push(filteredData);
   }
-
 };
-

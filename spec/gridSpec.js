@@ -3,7 +3,8 @@ describe('The Grid', function() {
   var mars, rob;
 
   beforeEach(function() {
-    mars = new Grid(77);
+    mars = new Grid();
+    mars.initialize(77);
   });
 
   it('should be in existance', function() {
