@@ -32,7 +32,7 @@ As a robot, I must transmit my final grid position and orientation back to
 planet earth so that my ground control knows where I am.
 ```
 
-![Jasmine Tests](/images/Jasmine-tests.png)
+![Jasmine Tests](/images/Jasmine-tests-updated.png)
 
 ### Further Work
 I plan to refactor the 'move forward method'. Originally I intended to use
