@@ -24,14 +24,16 @@ Robot.prototype = {
     this._lookAhead();
     for ( var i=0; i < this.lostRobotHistory.length; i++) {
       for ( var x=0; x < this.lostRobotHistory[i].length; x++ ) {
-        if (this.lostRobotHistory[i][x][0] === this.lookAhead[0] && this.lostRobotHistory[i][x][1] === this.lookAhead[1]) {
-          console.log("Not so fast, robot");
-        } else {
+        if (!this._lostRobotEqualLookAhead(i,x)) {
           this.coordinates = [this.lookAhead[0], this.lookAhead[1]];
         }
       }
     }
   },
+
+  _lostRobotEqualLookAhead: function(i,x) {
+    return this.lostRobotHistory[i][x][0] === this.lookAhead[0] && this.lostRobotHistory[i][x][1] === this.lookAhead[1] ? true : false;
+    },
 
   _lookAhead: function() {
     this.orientation === 'N' ? this.lookAhead[1] +=1:
@@ -60,7 +62,4 @@ Robot.prototype = {
     var rightMap = {'N': 'E', 'E': 'S', 'S': 'W','W': 'N'}
     this.orientation = rightMap[this.orientation];
   }
-
 };
-
-
