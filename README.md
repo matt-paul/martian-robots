@@ -36,10 +36,10 @@ planet earth so that my ground control knows where I am.
 
 ### Further Work
 I plan to refactor the 'move forward method'. Originally I intended to use
-'index of' to make the comparison, however I learnt that this does not work on
-2D arrays, so used a nested for loops, that I am not happy about.  This has
+'index of' to make the comparison, however I soon learnt that this does not work on
+2D arrays, so instead moved towards using nested for loops which I am not happy about.  This has
 also forced me to use a dummy value (outside of possible coordinates) for
 defaulting the 'robot lost history' array in a way that it can be used for
-looping through.  My current thinking is that if i process the robot lost data
+looping through.  My current thinking is that if I process the robot lost data
 into strings, I will then be able to use 'index of', cleaning up the above
 points.
