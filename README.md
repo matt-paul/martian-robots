@@ -35,5 +35,11 @@ planet earth so that my ground control knows where I am.
 ![Jasmine Tests](/images/Jasmine-tests.png)
 
 ### Further Work
-
-The last feature that I have not had a chance to complete is for the robots to not move off the edge of the world. Secondly, I would like to look further at how best to mock the robots within my Grid tests.  Finally, as a seperate project,  it would be interesting to try a modular pattern rather than using prototypes.  I would be very interested to see other examples!
+I plan to refactor the 'move forward method'. Originally I intended to use
+'index of' to make the comparison, however I learnt that this does not work on
+2D arrays, so used a nested for loops, that I am not happy about.  This has
+also forced me to use a dummy value (outside of possible coordinates) for
+defaulting the 'robot lost history' array in a way that it can be used for
+looping through.  My current thinking is that if i process the robot lost data
+into strings, I will then be able to use 'index of', cleaning up the above
+points.
