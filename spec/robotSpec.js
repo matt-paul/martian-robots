@@ -6,10 +6,11 @@ describe('Robot', function() {
     rob = new Robot();
   });
 
-  describe('inititalisation', function() {
+  describe('downloading data', function() {
     beforeEach(function() {
-      rob.downloadData(1,1,'E','FF',77, [1,3])
+      rob.downloadData(1,1,'E','FF', [1,3])
     });
+
     it('should have some starting coordinates', function() {
       expect(rob.coordinates).toBeDefined();
     });
@@ -23,14 +24,25 @@ describe('Robot', function() {
     });
 
     it('should process instruction string into an array', function()  {
-    expect(rob.instructions).toEqual(['F','F']);
+      expect(rob.instructions).toEqual(['F','F']);
+    });
+
+    it('should have a lost robot history', function() {
+      expect(rob.lostRobotHistory).toEqual([[1,3]]);
     });
   });
 
 
+  describe('no lost robots', function() {
+    it('should insert a placeholder for lost robot array', function() {
+      rob.downloadData(1,1,'E','FF')
+      expect(rob.lostRobotHistory).toEqual([[99,99]]);
+    });
+  });
+
   describe('moving forward', function() {
     it('should move north', function() {
-      rob.downloadData(1,1,'N','F')
+      rob.downloadData(1,1,'N','F',[2,2])
       rob._moveForward();
       expect(rob.coordinates).toEqual([1,2]);
     });
@@ -116,39 +128,38 @@ describe('Robot', function() {
     });
   });
 
-  describe('tracking grid positions', function() {
-    it('should push each grid position on the journey into an array', function() {
-      rob.downloadData(1,1,'N','F',[])
-      rob._moveForward();
-      expect(rob.trackingArray).toEqual([[1,1],[1,2]])
-    });
-  });
-
   describe('navigating', function() {
     it('should give back a correct final grid position for Sample Input 1', function() {
-      rob.downloadData(1,1,'E','RFRFRFRF',[])
+      rob.downloadData(1,1,'E','RFRFRFRF')
       rob.navigate();
       expect(rob.coordinates).toEqual([1,1]);
     });
 
     it('should give back a correct final grid position for Sample Input 2', function() {
-      rob.downloadData(3,2,'N','FRRFLLFFRRFLL',[])
+      rob.downloadData(3,2,'N','FRRFLLFFRRFLL')
       rob.navigate();
       expect(rob.coordinates).toEqual([3,3]);
     });
 
     it('should give back a correct final orientation for Sample Input 1', function() {
-      rob.downloadData(1,1,'E','RFRFRFRF',[])
+      rob.downloadData(1,1,'E','RFRFRFRF')
       rob.navigate();
       expect(rob.orientation).toEqual('E');
     });
 
     it('should give back a correct final orientation for Sample Input 2', function() {
-      rob.downloadData(3,2,'N','FRRFLLFFRRFLL',[])
+      rob.downloadData(3,2,'N','FRRFLLFFRRFLL')
       rob.navigate();
       expect(rob.orientation).toEqual('N');
     });
+  });
 
+  describe('being asked to go pass a lost robot position', function() {
+    it('should stop before a lost robot coordinate', function() {
+      rob.downloadData(1,1,'N','FFF',[[1,4]])
+      rob.navigate();
+      expect(rob.coordinates).toEqual([1,3]);
+    });
   });
 
 });

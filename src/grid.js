@@ -18,10 +18,22 @@ Grid.prototype = {
   },
 
   trackRobot: function() {
-    if (this.robot.coordinates[0] > this.outerEdgeCoordinates[0]) {
+    if (this._robotOffGrid) {
       this.robot.coordinates.push('LOST');
       this._updateLostRobotDataArray();
     }
+  },
+
+  _robotOffGrid: function() {
+    return this._offXAxis() || this._offYAxis() ? true : false;
+  },
+
+  _offXAxis: function() {
+    return this.robot.coordinates[0] > this.outerEdgeCoordinates[0] ? true : false;
+  },
+
+  _offYAxis: function() {
+    return this.robot.coordinates[1] > this.outerEdgeCoordinates[1] ? true : false;
   },
 
   _updateLostRobotDataArray: function() {
