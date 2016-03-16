@@ -11,18 +11,6 @@ describe('Robot', function() {
       rob.downloadData(1,1,'E','FF', [1,3])
     });
 
-    it('should have some starting coordinates', function() {
-      expect(rob.coordinates).toBeDefined();
-    });
-
-    it('should have a starting orientation', function() {
-      expect(rob.orientation).toBeDefined();
-    });
-
-    it('should have some mars roving instructions', function() {
-      expect(rob.instructions).toBeDefined();
-    });
-
     it('should process instruction string into an array', function()  {
       expect(rob.instructions).toEqual(['F','F']);
     });

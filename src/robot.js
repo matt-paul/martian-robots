@@ -4,11 +4,11 @@ function Robot () {
 Robot.prototype = {
   constructor: Robot,
 
-  downloadData: function(x,y, orientation,instructions, lostRobotHistory) {
+  downloadData: function(x,y, orientation,instructions, lostRobotArray) {
     this.coordinates = [x,y];
     this.orientation = orientation;
     this.instructions = instructions.split('');
-    this.lostRobotHistory =  typeof(lostRobotHistory) === 'undefined' ? [[99,99]] : [lostRobotHistory];
+    this.lostRobotHistory =  typeof(lostRobotArray) === 'undefined' ? [[99,99]] : [lostRobotArray];
     this.lookAhead = [x,y];
   },
 
@@ -50,7 +50,7 @@ Robot.prototype = {
   },
 
   _isValidReorientation: function(instruction) {
-   return instruction === 'L' || instruction === 'R' ? true : false;
+    return instruction === 'L' || instruction === 'R';
   },
 
   _orientateLeft: function() {

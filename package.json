@@ -1,0 +1,28 @@
+{
+  "name": "martian-badger",
+  "version": "1.0.0",
+  "description": "Guiding a robot around mars",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matt-paul/martian-robots.git"
+  },
+  "author": "matt paul",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matt-paul/martian-robots/issues"
+  },
+  "homepage": "https://github.com/matt-paul/martian-robots#readme",
+  "devDependencies": {
+    "jasmine": "^2.4.1",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-coverage": "^0.5.5",
+    "karma-jasmine": "^0.3.7",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "phantomjs-prebuilt": "^2.1.5"
+  }
+}

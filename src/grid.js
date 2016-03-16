@@ -5,7 +5,7 @@ Grid.prototype = {
   constructor: Grid,
 
   initialize: function(outerEdgeCoordinates) {
-    this.outerEdgeCoordinates = outerEdgeCoordinates.toString(10).split("").map(Number);
+    this.outerEdgeCoordinates = outerEdgeCoordinates.toString().split("").map(Number);
     this.lostRobotCoordinatesArray = [];
   },
 
@@ -25,15 +25,15 @@ Grid.prototype = {
   },
 
   _robotOffGrid: function() {
-    return this._offXAxis() || this._offYAxis() ? true : false;
+    return this._offXAxis() || this._offYAxis();
   },
 
   _offXAxis: function() {
-    return this.robot.coordinates[0] > this.outerEdgeCoordinates[0] ? true : false;
+    return this.robot.coordinates[0] > this.outerEdgeCoordinates[0];
   },
 
   _offYAxis: function() {
-    return this.robot.coordinates[1] > this.outerEdgeCoordinates[1] ? true : false;
+    return this.robot.coordinates[1] > this.outerEdgeCoordinates[1];
   },
 
   _updateLostRobotDataArray: function() {
